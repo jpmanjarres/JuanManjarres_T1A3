@@ -5,6 +5,7 @@ require 'tty-box'
 require 'colorize'
 
 require_relative 'methods.rb'
+# require_relative 'bmi.rb'
 
 name = (ARGV.length > 0) && ARGV
 puts "What is your name?"
@@ -30,6 +31,12 @@ puts "\n"
 prompt = TTY::Prompt.new
 prompt.keypress(centered("Press enter to continue").light_black, keys: [:return])
 clear
+
+age = []
+sex = []
+height = []
+weight = []
+
 puts "Hi #{name}, there is some basic information we need before we start the calculator…".light_blue
 puts "What is your age? (Don’t worry we won’t tell)"
 age = gets.chomp
@@ -42,6 +49,25 @@ weight = gets.chomp
 puts "Thanks for the information."
 sleep (3)
 clear
+puts "Based on the information provided, we have calculated your BMI (Body Mass Index).".light_magenta
+puts "Your current BMI is, #{}"
+puts "This show us you are #{}"
+prompt = TTY::Prompt.new
+prompt.keypress(centered("Press enter to continue").light_black)
+clear
+
+print  "
+█████   █████ ██████████   █████████   █████       ███████████ █████   █████ █████ █████             █████ █████    ███████    █████  █████
+░░███   ░░███ ░░███░░░░░█  ███░░░░░███ ░░███       ░█░░░███░░░█░░███   ░░███ ░░███ ░░███             ░░███ ░░███   ███░░░░░███ ░░███  ░░███ 
+ ░███    ░███  ░███  █ ░  ░███    ░███  ░███       ░   ░███  ░  ░███    ░███  ░░███ ███               ░░███ ███   ███     ░░███ ░███   ░███ 
+ ░███████████  ░██████    ░███████████  ░███           ░███     ░███████████   ░░█████                 ░░█████   ░███      ░███ ░███   ░███ 
+ ░███░░░░░███  ░███░░█    ░███░░░░░███  ░███           ░███     ░███░░░░░███    ░░███                   ░░███    ░███      ░███ ░███   ░███ 
+ ░███    ░███  ░███ ░   █ ░███    ░███  ░███      █    ░███     ░███    ░███     ░███                    ░███    ░░███     ███  ░███   ░███ 
+ █████   █████ ██████████ █████   █████ ███████████    █████    █████   █████    █████                   █████    ░░░███████░   ░░████████  
+░░░░░   ░░░░░ ░░░░░░░░░░ ░░░░░   ░░░░░ ░░░░░░░░░░░    ░░░░░    ░░░░░   ░░░░░    ░░░░░                   ░░░░░       ░░░░░░░      ░░░░░░░░   
+                                                                                                                                                                                                                                                                                     
+".white
+
 
 
 
