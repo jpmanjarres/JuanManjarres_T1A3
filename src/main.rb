@@ -5,8 +5,9 @@ require 'tty-box'
 require 'colorize'
 
 require_relative 'methods.rb'
+# require_relative'assessment.rb'
 # require_relative 'bmi.rb'
-
+clear
 name = (ARGV.length > 0) && ARGV
 puts "What is your name?"
 name = gets.chomp
@@ -38,11 +39,12 @@ height = []
 weight = []
 
 puts "Hi #{name}, there is some basic information we need before we start the calculator…".light_blue
+puts "\n" 
 puts "What is your age? (Don’t worry we won’t tell)"
 age = gets.chomp
 puts "What is your biological sex?"
 sex = gets.chomp
-puts "What is your height in cm?"
+puts "What is your height in mts?"
 height = gets.chomp
 puts "What is your current weight in kg?"
 weight = gets.chomp
@@ -50,8 +52,8 @@ puts "Thanks for the information."
 sleep (3)
 clear
 puts "Based on the information provided, we have calculated your BMI (Body Mass Index).".light_magenta
-puts "Your current BMI is, #{}"
-puts "This show us you are #{}"
+puts "Your Body Mass Index is, #{bmi}. This is considered #{}"
+puts "\n" 
 prompt = TTY::Prompt.new
 prompt.keypress(centered("Press enter to continue").light_black)
 clear
@@ -80,15 +82,13 @@ while option != "Exit"
     #case statement to handle the options of the menu
     case option
         when "Lose weight"
-            $weight.print_weight
+            weight = select_weight
         when "Build Muscle"
-            muscle = select_team
+            muscle = select_muscle
             muscle.full_info
         when "Improve health"
-            home = select_team
-            away = select_team
-            play_game(home, away)
-            #puts "Play game"
+            helath = select_health
+           
         else
             puts "See you next time..."
             next
@@ -96,6 +96,12 @@ while option != "Exit"
     print "Press Enter key to continue..."
     gets
     system "clear"
+
+
+
+
 end
+
+
 
 
