@@ -44,7 +44,7 @@ puts "What is your biological sex?"
 sex = gets.chomp
 puts "What is your height in cm?"
 height = gets.chomp
-puts "at is your current weight in kg?"
+puts "What is your current weight in kg?"
 weight = gets.chomp
 puts "Thanks for the information."
 sleep (3)
@@ -67,7 +67,35 @@ print  "
 ░░░░░   ░░░░░ ░░░░░░░░░░ ░░░░░   ░░░░░ ░░░░░░░░░░░    ░░░░░    ░░░░░   ░░░░░    ░░░░░                   ░░░░░       ░░░░░░░      ░░░░░░░░   
                                                                                                                                                                                                                                                                                      
 ".white
-
-
+$prompt = TTY::Prompt.new
+#this method shows a menu and returns the selected option
+def select_option
+    answer = $prompt.select("What is your goal?", ["Lose weight", "Build Muscle", "Improve health", "Exit"])
+    return answer
+end
+option = ""
+while option != "Exit"
+    #invokes the menu and stores the option in the variable
+    option = select_option
+    #case statement to handle the options of the menu
+    case option
+        when "Lose weight"
+            $weight.print_weight
+        when "Build Muscle"
+            muscle = select_team
+            muscle.full_info
+        when "Improve health"
+            home = select_team
+            away = select_team
+            play_game(home, away)
+            #puts "Play game"
+        else
+            puts "See you next time..."
+            next
+    end
+    print "Press Enter key to continue..."
+    gets
+    system "clear"
+end
 
 
