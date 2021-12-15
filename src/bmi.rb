@@ -1,12 +1,7 @@
+# Body Mass Index (BMI) is a person's weight in kilograms divided by the square of height in meters. A high BMI can indicate high body fatness.
 # require_relative 'methods.rb'
-# require_relative 'main.rb'
-weight = 80
-height = 1.71
-age = 40
-# def bmi
-    bim = (weight.to_f / (height.to_f ** 2)).round
-# end
-print bim
 
+    $bmi = (weight.to_f/ (height ** 2).to_f)
+    $bmi.push(array)
 
-# f_state
+    # print bmi
