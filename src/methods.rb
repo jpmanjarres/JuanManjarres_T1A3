@@ -24,7 +24,7 @@ def clear
 end 
 
 def calculate_bmi (weight, height) 
-    return (weight / (height ** 2)).round
+    return (weight / ((height/100).to_f ** 2)).round
 end
 
 def bmi_result (bmi)
@@ -48,7 +48,7 @@ def bmr_m (weight, height, age)
     return (10 * (weight.to_f ) + (6.25 * height.to_f) - ( 5* age.to_f) + 5).round    
 end
 
-# def final_cal_intk (e_weigh, by_when, #{bmr} )
-#     return ({bmr} - ((7700 * e_weigh )/ by_when))
+# def final_cal_intk (k_to_l, by_when, bmr_f )
+#     return ({bmr} - ((7700 * k_to_l )/ by_when))
 # end
 
