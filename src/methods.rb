@@ -1,5 +1,5 @@
-require 'tty-prompt'
 require 'colorize'
+require 'terminal-table'
 
 def banner
     print  "
@@ -13,11 +13,6 @@ def banner
     ░░░░░   ░░░░░ ░░░░░░░░░░ ░░░░░   ░░░░░ ░░░░░░░░░░░    ░░░░░    ░░░░░   ░░░░░    ░░░░░                   ░░░░░       ░░░░░░░      ░░░░░░░░   
                                                                                                                                                                                                                                                                                          
     ".light_blue
-end
-
-
-def header(title)
-    title.center(80, " ")
 end
 
 def centered(string)
@@ -45,10 +40,15 @@ def bmi_result (bmi)
     end
 end
 
-def calculate_bmr_f (weight, height, age)
+def bmr_f (weight, height, age)
     return (10 * (weight ) + (6.25 * height) - ( 5* age) - 161).round
 end
 
-def calculate_bmr_m (weight, height, age)
+def bmr_m (weight, height, age)
     return (10 * (weight.to_f ) + (6.25 * height.to_f) - ( 5* age.to_f) + 5).round    
 end
+
+# def final_cal_intk (e_weigh, by_when, #{bmr} )
+#     return ({bmr} - ((7700 * e_weigh )/ by_when))
+# end
+

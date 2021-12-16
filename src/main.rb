@@ -1,9 +1,7 @@
 require 'tty-prompt'
-require 'tty-box'
 require 'colorize'
-
 require_relative 'methods.rb'
-# require_relative'assessment.rb'
+require 'terminal-table'
 
 clear
 name = (ARGV.length > 0) && ARGV
@@ -13,8 +11,9 @@ clear
 
 puts "#{banner}"
 puts "\n"    
-puts ("Healthy you".green + " is the ultimate nutrition calculator that can guide you through your journey, whether it is losing weight, building muscle or improving your health,")
-puts"we are here to help you achieve your goal."
+puts "Healthy you".green + " is the ultimate nutrition calculator that can guide you through your journey, whether it is losing weight,"
+puts " building muscle or improving your health,"
+puts "we are here to help you achieve your goal."
 puts "\n"   
 prompt = TTY::Prompt.new
 prompt.keypress(centered("Press enter to continue").light_black,)
@@ -35,7 +34,9 @@ bwhen = []
 puts "Hi #{name}, there is some basic information we need before we start the calculator…".light_blue
 puts "\n" 
 puts "What is your age? (Don’t worry we won’t tell)"
-age = gets.chomp.to_i
+age = Integer(gets) rescue false 
+if age 
+end
 puts "What is your biological sex?"
 sex = gets.chomp
 puts "What is your height in mts?"
@@ -70,34 +71,35 @@ while option != "Exit"
     option = select_option
     #case statement to handle the options of the menu
     case option
+
         when "Lose weight"
-            answer = select_answer
-        when "Build Muscle"
-            answer = select_answer
-        when "Improve health"
-            answer = select_answer
+            answer = new_data
+        # when "Build Muscle"
+        #     answer = muscle
+        # when "Improve health"
+        #     answer = imp_health
            
-        else
-            puts "See you next time..."
-            next
+        # else
+        #     puts "See you next time..."
+        #     next
     end
-    print "Press Enter key to continue..."
-    gets
-    system "clear"
+    # print "Press Enter key to continue..."
+    # gets
+    # system "clear"
 
 end
 
 #### second part ####
 
-require "tty-prompt"
-
 e_weigh = []
-bwhen = []
+by_when = []
 
+def new_data (e_weigh, by_when)
 puts "what is your desired weight??"
 e_weigh = gets.chomp.to_i
 puts "By when (days)?"
-bwhen = gets.chomp.to_i
+by_when = gets.chomp.to_i
+end 
 
 $prompt = TTY::Prompt.new
 #this method shows a menu and returns the selected option
@@ -128,18 +130,25 @@ while option != "Exit"
 
 
 #### Sumary Table #####
+puts Terminal::Table.new(
+    rows: [
+        ['Age', {age}],
+        ['Current weight', {weight}]
+        ['Macro Percentages', {macros}]
+    ],
 
-    # brief ummaryy 
-    # age #{age}
-    # current weight #{weight}
-    # macro ercentages 
+    headings: [
+        'Info',
+        'Prices'
+    ],
 
-    # puts "To maintain your current weight requires about #{} Calories per day."
-    # puts "To reach your goal of #{e_weigh} kg in #{bwhen} days at your current body weight and activity level, requires about: #{calories}"
+    style: {
+        border_i: '-'
+    }
+)
 
 
-
-
-
+    puts "To maintain your current weight requires about #{bmr} Calories per day."
+    puts "To reach your goal of #{e_weigh} kg in #{bwhen} days at your current body weight and activity level, requires about: #{calories}"
 
 end
