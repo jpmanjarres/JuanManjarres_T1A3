@@ -1,9 +1,9 @@
 require "tty-prompt"
 
-e_weigh = ""
-bwhen = ""
+e_weigh = []
+bwhen = []
 
-puts "How much do you want to weigh?"
+puts "what is your desired weight??"
 e_weigh = gets.chomp.to_i
 puts "By when (days)?"
 bwhen = gets.chomp.to_i
@@ -21,7 +21,9 @@ while option != "Exit"
     #case statement to handle the options of the menu
     case option
         when "No exercise at all"
+
         when "Light (1-3 hrs)"
+
         when "Moderate (3-4)"
         when "Intense (4-6 hrs)" 
 
@@ -31,4 +33,21 @@ while option != "Exit"
     end
     print "Press Enter key to continue..."
     gets
+
+
+#### Sumary Table #####
+
+    # brief ummaryy 
+    # age #{age}
+    # current weight #{weight}
+    # macro ercentages 
+
+    # puts "To maintain your current weight requires about #{} Calories per day."
+    # puts "To reach your goal of #{e_weigh} kg in #{bwhen} days at your current body weight and activity level, requires about: #{calories}"
+
+
+
+
+
+
 end
