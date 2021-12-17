@@ -34,7 +34,6 @@ def calculate_bmi (weight, height)
 
     pre_round = weight_float / height_sq
 
-    # puts weight_float, height_float, height_sq, pre_round
     return pre_round.round
 end
 
