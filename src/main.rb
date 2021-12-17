@@ -3,6 +3,7 @@ require 'colorize'
 require 'terminal-table'
 require 'pastel'
 require 'tty-progressbar'
+require 'tty-box'
 require_relative 'methods.rb'
 
 
@@ -86,12 +87,14 @@ bar = TTY::ProgressBar.new("|:bar|",
 clear
 puts "#{banner}".yellow
 puts "\n"  
-puts "Based on the information provided, we have calculated your BMI (Body Mass Index).".light_magenta
+
 
 # puts weight, height
 bmi_res = calculate_bmi(weight, height) 
 
-puts "Your Body Mass Index is, #{bmi_res}. This is considered #{bmi_result(bmi_res)}"
+box = TTY::Box.warn("Based on the information provided, we have calculated your BMI (Body Mass Index),
+Your Body Mass Index is, #{bmi_res}. This is considered #{bmi_result(bmi_res)}")
+print box
 puts "\n" 
 
 prompt = TTY::Prompt.new
@@ -170,5 +173,12 @@ puts "(c) = Carbs"
 puts "(p) = Protein"
 puts "(f) = Fats"
 puts "\n" 
-puts "To maintain your current weight requires about #{bmr.to_s.yellow}. Calories per day."
-puts "To reach your goal of #{k_to_l} kg in #{by_when} days at your current body weight and activity level, requires about: #{cal_per_day} Calories per day "
+box = TTY::Box.info(
+"To maintain your current weight requires about #{bmr}. Calories per day.
+To reach your goal of #{k_to_l} kg in #{by_when} days at your current body weight and activity level, requires about: #{cal_per_day} Calories per day ")
+print box
+puts "\n" 
+puts "Thanks for using this Calculator"
+puts "\n" 
+puts "                                       Copyright © 2020 | created by Juan Manjarres "
+puts "\n" 
