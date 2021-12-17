@@ -5,10 +5,16 @@ require_relative 'methods.rb'
 
 
 clear
-name = (ARGV.length > 0) && ARGV
+
+
 puts "Welcome"
-puts "What is your name?"
-name = gets.chomp
+if  (ARGV.length == 0) 
+    puts "What is your name?"
+    name = gets.chomp
+else 
+    name = ARGV[0]
+end
+
 clear
 
 puts "#{banner}"
@@ -20,43 +26,51 @@ prompt = TTY::Prompt.new
 prompt.keypress(centered("Press enter to continue").light_black,)
 clear
 
-age = [] 
-sex = []
-height = [] 
-weight = []
-
-
 puts "Hi #{name}, there is some basic information we need before we start the calculator…".light_blue
 puts "\n" 
+
 # >=18<120
 puts "What is your age? (Don’t worry we won’t tell)"
-age = gets.chomp
+age = chomp_int
 
-
+until age >= 18 && age <= 99
+    puts "please enter a valid whole age between 18 & 99"
+    age = chomp_int
+end
 # male/female
-puts "What is your biological sex?"
-gender = $prompt.multi_select("Select drinks?", choices)
-
-# sex = gets.chom
-# if sex == female
-#    female = bmr_f  
-# if sex == male
-#     male = bmr_m
-
+puts "What is your biological sex? (m/f)"
+sex = gets.chomp
+until sex == "f" || sex =="m"
+    puts "Please enter either m or f"
+    sex = gets.chomp
+end
 
 # valid height is >=60<300
 puts "What is your height in cms"
-height = gets.chomp.to_f
+height = chomp_int
+until height >= 60 && height <= 300
+    puts "please enter a valid height in cm betwen 60 & 300"
+    height = chomp_int 
+end
 # Valid weight is 23-227 kg
 puts "What is your current weight in kg?"
-weight = gets.chomp.to_f
+weight = chomp_int
+until weight  >= 27 && weight  <= 227
+    puts "please enter a valid height between 23 & 227"
+    weight  = chomp_int
+end
+
 puts "Thanks for the information."
 sleep (3)
 clear
 
 puts "Based on the information provided, we have calculated your BMI (Body Mass Index).".light_magenta
 
-bmi_res= calculate_bmi(weight, height) 
+# puts weight, height
+
+bmi_res = calculate_bmi(weight, height) 
+puts bmi_res
+
 
 puts "Your Body Mass Index is, #{bmi_res}. This is considered #{bmi_result(bmi_res)}"
 puts "\n" 
@@ -66,49 +80,49 @@ prompt.keypress(centered("Press enter to continue").light_black)
 clear
 
 puts "#{banner}".white
+
+options = {
+    "Lose weight" => "50% Carbs, 15% Fats, 35% Protein",
+    "Build Muscle" => "30% Carbs, 30% Fats, 40% Protein",
+    "Improve health" => "55% Carbs, 30% Fats, 15% Protein",
+    "Exit" => nil,
+}
+
 $prompt = TTY::Prompt.new
 #this method shows a menu and returns the selected option
-def select_option
-    answer = $prompt.select("What is your goal?", ["Lose weight", "Build Muscle", "Improve health", "Exit"])
+def select_option (options_to_print)
+    answer = $prompt.select("What is your goal?", options_to_print)
     return answer
 end
-option = ""
-while option != "Exit"
-    #invokes the menu and stores the option in the variable
-    option = select_option
-    #case statement to handle the options of the menu
-    case option
 
-        when "Lose weight"
-            # return "50% Carbs, 15% Fats, 35% Protein"
-            new_data
-        when "Build Muscle"
-            # return "30% Carbs, 30% Fats, 40% Protein"
-            new_data
-        when "Improve health"
-            # return "55% Carbs, 30% Fats, 15% Protein"
-            new_data
-           
-        else
-            puts "See you next time..."
-            next
-    end
-    print "Press Enter key to continue..."
-    gets
+#invokes the menu and stores the option in the variable
+option = select_option(options.keys)
+macro = options[option]
+
+# no idea why 
+if macro == nil
+    puts "thanks for playing"
+    exit(0)
+end
+
+
+print "Press Enter key to continue..."
+gets
     system "clear"
 
-end
+
 
 #### second part ####
 
 k_to_l= []
 by_when = []
 
+def new_data
 puts "how many kilos do you need/want to lose?"
 k_to_l = gets.chomp.to_i
 puts "By when (days)?"
 by_when = gets.chomp.to_i
-
+end
 
 $prompt = TTY::Prompt.new
 #this method shows a menu and returns the selected option
