@@ -13,6 +13,7 @@ if  (ARGV.length == 0)
     name = gets.chomp
 else 
     name = ARGV[0]
+    ARGV.clear
 end
 
 clear
@@ -116,19 +117,39 @@ if activity_level_multiplier == nil
     exit(0)
 end
 
-    
-#### Sumary Table #####
-# rows = []
-# rows << ['Age', 31]
-# rows << ['Current Weight', 64]
-# rows << ['Macro Percentages', "30(c), 40(p), 30(f)"]
+puts "How many kilos do you need/want to lose?"
+k_to_l = chomp_int
+until k_to_l > 0 && k_to_l < weight
+    puts "Please enter a whole number greater than 0 and less than your weight of #{weight}"
+    k_to_l = chomp_int
+end
 
-# table = Terminal::Table.new :title => "BRIEF SUMMARY", :headings => [], :rows => rows
-# puts table
-# puts "\n" 
-# puts "(c) = Carbs"
-# puts "(p) = Protein"
-# puts "(f) = Fats"
-# puts "\n" 
-# puts "To maintain your current weight requires about (#{bmr}). Calories per day."
-# puts "To reach your goal of #{k_to_l} kg in #{by_when} days at your current body weight and activity level, requires about: Calories per day "
+puts "in how many days"
+by_when = chomp_int
+##can't lose more than a kilo a day
+until by_when >= k_to_l 
+    puts "entere a number grater than number of kilos you want to lose"
+    by_when = chomp_int
+end
+
+bmr = calc_bmr(sex == 'm', weight, height, age)
+cal_per_day = final_cal_intk(k_to_l, by_when, bmr)
+
+
+### Sumary Table #####
+rows = []
+rows << ['Age', age]
+rows << ['Current Weight', weight]
+rows << ['Target weight', weight - k_to_l]
+rows << ['Number of days', by_when]
+rows << ['Macro Percentages', macro]
+
+table = Terminal::Table.new :title => "BRIEF SUMMARY".light_magenta, :headings => [], :rows => rows
+puts table
+puts "\n" 
+puts "(c) = Carbs"
+puts "(p) = Protein"
+puts "(f) = Fats"
+puts "\n" 
+puts "To maintain your current weight requires about #{bmr.to_s.yellow}. Calories per day."
+puts "To reach your goal of #{k_to_l} kg in #{by_when} days at your current body weight and activity level, requires about: #{cal_per_day} Calories per day "
