@@ -89,71 +89,34 @@ options = {
 }
 
 $prompt = TTY::Prompt.new
-#this method shows a menu and returns the selected option
-def select_option (options_to_print)
-    answer = $prompt.select("What is your goal?", options_to_print)
-    return answer
-end
+
 
 #invokes the menu and stores the option in the variable
-option = select_option(options.keys)
+option = $prompt.select("What is your goal?", options.keys)
 macro = options[option]
 
-# no idea why 
 if macro == nil
     puts "thanks for playing"
     exit(0)
 end
 
+activity_levels = {
+    "Sedentary" => 1.2,
+    "Lightly active(1-3 hrs)"=> 1.375,
+    "Moderately active(3-4)" => 1.55,
+    "Very active (4-6 hrs)" => 1.725,
+    "Extra active" => 1.9,
+    "Exit" => nil,
+}
+activity_level = $prompt.select("Activity level", activity_levels.keys)
+activity_level_multiplier = activity_levels[activity_level]
 
-print "Press Enter key to continue..."
-gets
-    system "clear"
-
-
-
-#### second part ####
-
-k_to_l= []
-by_when = []
-
-def new_data
-puts "how many kilos do you need/want to lose?"
-k_to_l = gets.chomp.to_i
-puts "By when (days)?"
-by_when = gets.chomp.to_i
+if activity_level_multiplier == nil
+    puts "thanks for playing"
+    exit(0)
 end
 
-$prompt = TTY::Prompt.new
-#this method shows a menu and returns the selected option
-def select_answer
-    answer = $prompt.select("Activity level", ["Sedentary", "Lightly active(1-3 hrs)", "Moderately active(3-4)", "Very active (4-6 hrs)", "Extra active","Exit"])
-    return answer
-end
-option = ""
-while option != "Exit"
-    #invokes the menu and stores the option in the variable
-    option = select_answer
-    #case statement to handle the options of the menu
-    case option
-        when "Sedentary" 
-            # return bmr * 1.2
-        when "Lightly active(1-3 hrs)"
-            # return bmr * 1.375
-        when "Moderate (3-4)"
-            # return bmr * 1.55
-        when "Very active (4-6 hrs)"
-            # return bmr * 1.725
-        when "Extra active"
-            # return bmr * 1.9
-        else
-            puts "See you next time..."
-            next
-    end
-    print "Press Enter key to continue..."
-    gets
-
-    # select_answer \
+    
 #### Sumary Table #####
 # rows = []
 # rows << ['Age', 31]
@@ -169,4 +132,3 @@ while option != "Exit"
 # puts "\n" 
 # puts "To maintain your current weight requires about (#{bmr}). Calories per day."
 # puts "To reach your goal of #{k_to_l} kg in #{by_when} days at your current body weight and activity level, requires about: Calories per day "
-end
