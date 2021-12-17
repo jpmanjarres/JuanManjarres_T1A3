@@ -31,11 +31,19 @@ puts "\n"
 # >=18<120
 puts "What is your age? (Don’t worry we won’t tell)"
 age = gets.chomp
+
+
 # male/female
 puts "What is your biological sex?"
-sex = gets.chomp
-while sex == "female"
-    
+gender = $prompt.multi_select("Select drinks?", choices)
+
+# sex = gets.chom
+# if sex == female
+#    female = bmr_f  
+# if sex == male
+#     male = bmr_m
+
+
 # valid height is >=60<300
 puts "What is your height in cms"
 height = gets.chomp.to_f
@@ -72,10 +80,13 @@ while option != "Exit"
     case option
 
         when "Lose weight"
-                new_data
+            # return "50% Carbs, 15% Fats, 35% Protein"
+            new_data
         when "Build Muscle"
+            # return "30% Carbs, 30% Fats, 40% Protein"
             new_data
         when "Improve health"
+            # return "55% Carbs, 30% Fats, 15% Protein"
             new_data
            
         else
@@ -111,14 +122,16 @@ while option != "Exit"
     option = select_answer
     #case statement to handle the options of the menu
     case option
-        when "Sedentary"
-
+        when "Sedentary" 
+            # return bmr * 1.2
         when "Lightly active(1-3 hrs)"
-
+            # return bmr * 1.375
         when "Moderate (3-4)"
+            # return bmr * 1.55
         when "Very active (4-6 hrs)"
+            # return bmr * 1.725
         when "Extra active"
-
+            # return bmr * 1.9
         else
             puts "See you next time..."
             next
@@ -126,20 +139,20 @@ while option != "Exit"
     print "Press Enter key to continue..."
     gets
 
-
+    # select_answer \
 #### Sumary Table #####
-rows = []
-rows << ['Age', 31]
-rows << ['Current Weight', 64]
-rows << ['Macro Percentages', "30(c), 40(p), 30(f)"]
+# rows = []
+# rows << ['Age', 31]
+# rows << ['Current Weight', 64]
+# rows << ['Macro Percentages', "30(c), 40(p), 30(f)"]
 
-table = Terminal::Table.new :title => "BRIEF SUMMARY", :headings => [], :rows => rows
-puts table
-puts "\n" 
-puts "(c) = Carbs"
-puts "(p) = Protein"
-puts "(f) = Fats"
-puts "\n" 
-puts "To maintain your current weight requires about (#{bmr}). Calories per day."
-puts "To reach your goal of #{k_to_l} kg in #{by_when} days at your current body weight and activity level, requires about: 1540 Calories per day "
+# table = Terminal::Table.new :title => "BRIEF SUMMARY", :headings => [], :rows => rows
+# puts table
+# puts "\n" 
+# puts "(c) = Carbs"
+# puts "(p) = Protein"
+# puts "(f) = Fats"
+# puts "\n" 
+# puts "To maintain your current weight requires about (#{bmr}). Calories per day."
+# puts "To reach your goal of #{k_to_l} kg in #{by_when} days at your current body weight and activity level, requires about: Calories per day "
 end

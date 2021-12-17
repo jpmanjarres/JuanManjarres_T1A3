@@ -52,3 +52,10 @@ end
 #     return ({bmr} - ((7700 * k_to_l )/ by_when))
 # end
 
+# class Female 
+#     def initialize (weight, height, age)
+#     @female =  female
+#     end
+#     def mr_f (weight, height, age)
+#         return (10 * ( * height.to_f) - ( 5* age.to_f) + 5).round     
+# end
