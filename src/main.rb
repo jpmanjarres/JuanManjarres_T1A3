@@ -1,6 +1,8 @@
 require 'tty-prompt'
 require 'colorize'
 require 'terminal-table'
+require 'pastel'
+require 'tty-progressbar'
 require_relative 'methods.rb'
 
 
@@ -27,6 +29,8 @@ prompt = TTY::Prompt.new
 prompt.keypress(centered("Press enter to continue").light_black,)
 clear
 
+puts "#{banner}".green
+puts "\n"  
 puts "Hi #{name}, there is some basic information we need before we start the calculator…".light_blue
 puts "\n" 
 
@@ -62,16 +66,30 @@ until weight  >= 27 && weight  <= 227
 end
 
 puts "Thanks for the information."
-sleep (3)
-clear
 
+pastel = Pastel.new
+green  = pastel.on_green(" ")
+red    = pastel.on_red(" ")
+
+bar = TTY::ProgressBar.new("|:bar|",
+    total: 30,
+    complete: green,
+    incomplete: red,
+    hide_cursor: true
+)
+
+30.times do
+    sleep(0.1)
+    bar.advance
+  end
+
+clear
+puts "#{banner}".yellow
+puts "\n"  
 puts "Based on the information provided, we have calculated your BMI (Body Mass Index).".light_magenta
 
 # puts weight, height
-
 bmi_res = calculate_bmi(weight, height) 
-puts bmi_res
-
 
 puts "Your Body Mass Index is, #{bmi_res}. This is considered #{bmi_result(bmi_res)}"
 puts "\n" 
@@ -97,7 +115,7 @@ option = $prompt.select("What is your goal?", options.keys)
 macro = options[option]
 
 if macro == nil
-    puts "thanks for playing"
+    puts "thanks for using this calculator"
     exit(0)
 end
 
@@ -113,7 +131,7 @@ activity_level = $prompt.select("Activity level", activity_levels.keys)
 activity_level_multiplier = activity_levels[activity_level]
 
 if activity_level_multiplier == nil
-    puts "thanks for playing"
+    puts "thanks for using this calculator"
     exit(0)
 end
 
@@ -135,7 +153,8 @@ end
 bmr = calc_bmr(sex == 'm', weight, height, age)
 cal_per_day = final_cal_intk(k_to_l, by_when, bmr)
 
-
+clear
+puts "#{banner}".white
 ### Sumary Table #####
 rows = []
 rows << ['Age', age]
