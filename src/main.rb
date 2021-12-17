@@ -9,10 +9,12 @@ require_relative 'methods.rb'
 
 clear
 
-
-puts "Welcome"
+puts "                                    For better experience please maximise the terminal".green
+puts "\n"  
+puts "                                                       Welcome".light_magenta
+puts "\n" 
 if  (ARGV.length == 0) 
-    puts "What is your name?"
+    puts "What is your name?".yellow
     name = gets.chomp
 else 
     name = ARGV[0]
