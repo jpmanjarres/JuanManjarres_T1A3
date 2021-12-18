@@ -53,19 +53,22 @@ The users will utilise this tool to easily understand all the details of their f
 
 The user will initially be welcomed to Healthy You, and a brief summary of what the application can be used for. Then, the application will ask the user to enter their name. After the user enters their name, the application will ask some basic information, such as, age, gender, height, and weight. It will then calculate the users BMI range and explain briefly what this means.
 
-### **Feature 1** (Insert screenshot)
+### **Feature 1** 
+![Calorie Intake](Docs/trello_board.png)
 
 **BMI calculation: This feature will provide the users Body Mass Index figure, which is calculated by dividing your weight in kilograms by your height in metres squared. BMI is a simple indication of the relationship between weight and height that is frequently used to identify overweight and obesity in adults, both at the individual and population level.**
 
 Once the user knows their current fitness/health level, they will be able to choose a health plan based on the goal they want to achieve. In order to do so, the application will request some further information from the user, such as, goal weight, expected date they want to achieve this result, and their current level of physical activity.
 
-### **Feature 2** (Insert screenshot)
+### **Feature 2** 
+![Calorie Intake](Docs/trello_board.png)
 
 **Goal options: Based on the BMI result obtained, the users will determine its health goal. The goal options provided in the app are: Lose weight, build muscle, or improve health.**
 
 As a result, the application will calculate and provide the number of daily calorie intake required to achieve their goal, and the healthy ratio of nutrients needed within the calculated amount of calories.
 
-### **Feature 3** (Insert screenshot)
+### **Feature 3**
+![Calorie Intake](Docs/trello_board.png)
 
 **Calorie intake and macros calculator: The application will calculate the number of calories required by the user in order to achieve their health goal and will also provide the appropriate ratio of nutrients needed to meet the goal.**
 
@@ -161,6 +164,9 @@ More of my Trello Board and Implementation Plan can be found in the below link [
 ### **Main Trello Board**
 
 ![Main Trello Board](Docs/trello_board.png)
+![Trello board](Docs/BMI_calculator.png)
+![Trello board](Docs/Goal_option.png)
+![Trello board](Docs/Calorie_intake.png)
 
 ## **Help Documentation**
 
