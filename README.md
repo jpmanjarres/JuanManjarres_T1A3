@@ -160,7 +160,7 @@ More of my Trello Board and Implementation Plan can be found in the below link [
 
 ### **Main Trello Board**
 
-![Main Trello Board](./docs/trello_board.png)
+![Main Trello Board](Docs/trello_board.png)
 
 ## **Help Documentation**
 
