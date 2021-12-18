@@ -69,7 +69,8 @@ until weight  >= 27 && weight  <= 227
 end
 
 puts "Thanks for the information."
-
+puts "\n" 
+puts "\n" 
 pastel = Pastel.new
 green  = pastel.on_green(" ")
 red    = pastel.on_red(" ")
