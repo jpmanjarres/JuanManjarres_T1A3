@@ -154,7 +154,7 @@ Improve health: XX% Carbs, XX% Fats, XX% Protein
 -   Farewells the user and exits the application.
 
 ## Control Flow Diagram
-
+![Control Flow Diagram](Docs/Flow_chart.png)
 ## **Implementation Plan**
 
 I used a Trello board by Trello software to aid in the planning and implementation process.
