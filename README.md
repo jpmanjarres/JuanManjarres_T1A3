@@ -57,7 +57,7 @@ The users will utilise this tool to easily understand all the details of their f
 The user will initially be welcomed to Healthy You, and a brief summary of what the application can be used for. Then, the application will ask the user to enter their name. After the user enters their name, the application will ask some basic information, such as, age, gender, height, and weight. It will then calculate the users BMI range and explain briefly what this means.
 
 ### **Feature 1** 
-![4](4.png)
+![4](Docs/4.png)
 
 **BMI calculation: This feature will provide the users Body Mass Index figure, which is calculated by dividing your weight in kilograms by your height in metres squared. BMI is a simple indication of the relationship between weight and height that is frequently used to identify overweight and obesity in adults, both at the individual and population level.**
 
