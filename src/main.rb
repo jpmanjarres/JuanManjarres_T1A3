@@ -151,12 +151,12 @@ puts "in how many days"
 by_when = chomp_int
 ##can't lose more than a kilo a day
 until by_when >= k_to_l 
-    puts "entere a number grater than number of kilos you want to lose"
+    puts "enter a number greater than number of kilos you want to lose"
     by_when = chomp_int
 end
 
 bmr = calc_bmr(sex == 'm', weight, height, age)
-cal_per_day = final_cal_intk(k_to_l, by_when, bmr)
+cal_per_day = final_cal_intk(k_to_l, by_when)
 
 clear
 puts "#{banner}".white

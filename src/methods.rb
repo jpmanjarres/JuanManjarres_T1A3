@@ -54,10 +54,10 @@ end
 
 def calc_bmr(is_male, weight, height, age)
     modifier = is_male ? +5 : -161
-    return (10 * (weight ) + (6.25 * height) - ( 5* age) + modifier).round
+    return (10 * (weight ) + (6.25 * height) - ( 5* age) + modifier) 
 end
 
 
-def final_cal_intk(k_to_l, by_when, bmr )
-    return (bmr - ((7700 * k_to_l )/ by_when)).abs
+def final_cal_intk(k_to_l, by_when)
+    return ((7700 * k_to_l )/ by_when)
 end
