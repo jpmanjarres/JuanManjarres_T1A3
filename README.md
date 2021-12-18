@@ -171,6 +171,10 @@ More of my Trello Board and Implementation Plan can be found in the below link [
 ![Trello board](Docs/Goal_option.png)
 ![Trello board](Docs/Calorie_intake.png)
 
+### **Manual Input Test**
+
+![Manual Input Test](Docs/Manual_input_test.png)
+
 ## **Help Documentation**
 
 ### **Installation Instructions**
